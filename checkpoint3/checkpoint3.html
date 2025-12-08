@@ -7476,6 +7476,76 @@ a.anchor-link {
 <!-- End of mermaid configuration --></head>
 <body class="jp-Notebook" data-jp-theme-light="true" data-jp-theme-name="JupyterLab Light">
 <main>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=e60bd7e5">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h1 id="1.-Sentiment,-Engagement,-and-Social-Media-Posts">1. Sentiment, Engagement, and Social Media Posts<a class="anchor-link" href="#1.-Sentiment,-Engagement,-and-Social-Media-Posts">¶</a></h1><p><strong>Fall 2025 Data Science Project – CMSC 320</strong></p>
+<p><strong>Authors:</strong> Maiwand Raheem, Abdullatif Elmuaqqat, Mohammed Bilal Qayum, Sadman Hussein, Alexis</p>
+<p><strong>Contributions</strong></p>
+<ul>
+<li><strong>A: Project Idea</strong> – [Abdullatif]</li>
+</ul>
+<p>Proposed analyzing social media sentiment and engagement, and helped define the main research questions.</p>
+<ul>
+<li><strong>B: Dataset Curation and Preprocessing</strong> – [Bilal]</li>
+</ul>
+<p>Cleaned the raw CSV, standardized sentiment and platform labels, and engineered features like engagement and sentiment scores.</p>
+<ul>
+<li><strong>C: Data Exploration and Summary Statistics</strong> – [Sadman]</li>
+</ul>
+<p>Led the exploratory data analysis, created descriptive plots, and designed the hypothesis tests (Welch’s t-test, ANOVA, Spearman correlation).</p>
+<ul>
+<li><strong>D: ML Algorithm Design/Development</strong> – [Alexis]</li>
+</ul>
+<p>Selected text-classification as the primary analysis, designed the TF–IDF + Logistic Regression pipeline, and implemented Random Forest as a comparison model.</p>
+<ul>
+<li><strong>E: ML Training and Test Data Analysis</strong> – [Maiwand]</li>
+</ul>
+<p>Trained and evaluated the models, tuned class balancing and thresholds, ran cross-validation, and interpreted model performance.</p>
+<ul>
+<li><strong>F: Visualization, Result Analysis, Conclusion</strong> – [Maiwand, Abdullatif, Alexis, Bilal, Sadman]</li>
+</ul>
+<p>Produced the final plots (EDA and ML), wrote the narrative that connects the statistical results and ML models, and summarized key takeaways.</p>
+<ul>
+<li><strong>G: Final Tutorial Report Creation</strong> – Maiwand Raheem</li>
+</ul>
+<p>Integrated all sections into this tutorial, revised formatting, and prepared the GitHub Pages version.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=72ab3b40">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="2.-Introduction">2. Introduction<a class="anchor-link" href="#2.-Introduction">¶</a></h2><p>Social media platforms generate a huge stream of short posts where people express how they feel — excited, annoyed, grateful, or frustrated. At the same time, these platforms measure “engagement” through likes, retweets/shares, and other interactions. This makes them a natural place to ask a core data-science question:</p>
+<blockquote>
+<p><strong>How does sentiment relate to engagement, and can we automatically detect that sentiment from text?</strong></p>
+</blockquote>
+<p>In this tutorial, we analyze a curated dataset of 732 social media posts from multiple platforms. Each post includes the raw text, a manually assigned sentiment label (e.g., <em>Positive</em>, <em>Neutral</em>, <em>Negative</em>), basic metadata (timestamp, platform, user), and engagement metrics (likes and retweets).</p>
+<p>Our project focuses on three main questions:</p>
+<ol>
+<li><strong>Do positive posts receive more engagement than negative posts?</strong></li>
+<li><strong>Are there meaningful differences in average sentiment across platforms (Twitter, Instagram, Facebook)?</strong></li>
+<li><strong>Can a machine-learning model reliably classify posts as positive or negative using only the text, and is a simple positive/negative polarity enough for this task?</strong></li>
+</ol>
+<p>We answer these questions by walking through the full data-science pipeline:</p>
+<ul>
+<li>curating and cleaning the dataset,</li>
+<li>exploring and visualizing key patterns,</li>
+<li>performing hypothesis tests,</li>
+<li>and training text-based machine-learning models.</li>
+</ul>
+<p>By the end, a reader should understand both what the data says about sentiment and engagement, and how to build a reproducible sentiment-classification pipeline on similar social media data.</p>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=673c4dd1">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7521,7 +7591,33 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Define-the-dataset">Define the dataset<a class="anchor-link" href="#Define-the-dataset">¶</a></h2>
+<h2 id="3.-Define-the-dataset">3. Define the dataset<a class="anchor-link" href="#3.-Define-the-dataset">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2bd6e593">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<p>For this project we work with a single CSV file, <code>sentimentdataset.csv</code>, which contains <strong>732 social media posts</strong>. Each row corresponds to one post and includes:</p>
+<ul>
+<li><strong>Text</strong> – the content of the post (plain text, emojis, hashtags).</li>
+<li><strong>Sentiment</strong> – a manually assigned sentiment label for the post.</li>
+<li><strong>Timestamp, User, Platform, Hashtags</strong> – basic context and metadata.</li>
+<li><strong>Retweets</strong> and <strong>Likes</strong> – engagement metrics.</li>
+<li><strong>Country, Year, Month, Day, Hour</strong> – simple time and location features.</li>
+</ul>
+<p>We load the CSV into a pandas DataFrame and perform several preprocessing steps so that it is ready for analysis:</p>
+<ul>
+<li>Converting all string fields to consistent casing and trimming whitespace.</li>
+<li>Engineering an <strong>Engagement</strong> column as <code>Likes + Retweets</code>.</li>
+<li>Mapping the original sentiment labels into numeric scores (−1 for negative, 0 for neutral, +1 for positive) for correlation and hypothesis testing.</li>
+<li>Creating a combined text field (<code>Text + Hashtags</code>) for the machine-learning model, and representing it using <strong>TF–IDF</strong> features.</li>
+</ul>
+<p>All of these transformations are done in code cells below and reused later in the EDA, hypothesis tests, and machine-learning sections. This ensures the entire pipeline is reproducible from the raw CSV.</p>
 </div>
 </div>
 </div>
@@ -7682,6 +7778,17 @@ a.anchor-link {
 </div>
 </div>
 </div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=33bdd031">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
+<h2 id="4.-Exploratory-Data-Analysis">4. Exploratory Data Analysis<a class="anchor-link" href="#4.-Exploratory-Data-Analysis">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=2737f2f0">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -7689,7 +7796,7 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Data-Exploring:-Check-for-null-values-and-data-types.">Data Exploring: Check for null values and data types.<a class="anchor-link" href="#Data-Exploring:-Check-for-null-values-and-data-types.">¶</a></h2>
+<h3 id="Data-Exploring:-Check-for-null-values-and-data-types.">Data Exploring: Check for null values and data types.<a class="anchor-link" href="#Data-Exploring:-Check-for-null-values-and-data-types.">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7750,7 +7857,7 @@ None
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Data-Processing">Data Processing<a class="anchor-link" href="#Data-Processing">¶</a></h2>
+<h3 id="Data-Processing">Data Processing<a class="anchor-link" href="#Data-Processing">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7783,7 +7890,7 @@ None
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Summary-Statistics-and-Hypothesis-Testing">Summary Statistics and Hypothesis Testing<a class="anchor-link" href="#Summary-Statistics-and-Hypothesis-Testing">¶</a></h2>
+<h3 id="Summary-Statistics-and-Hypothesis-Testing">Summary Statistics and Hypothesis Testing<a class="anchor-link" href="#Summary-Statistics-and-Hypothesis-Testing">¶</a></h3>
 </div>
 </div>
 </div>
@@ -7834,7 +7941,7 @@ None
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Welch%E2%80%99s-t-test:-Comparing-Engagement-Between-Positive-and-Negative-Posts">Welch’s t-test: Comparing Engagement Between Positive and Negative Posts<a class="anchor-link" href="#Welch%E2%80%99s-t-test:-Comparing-Engagement-Between-Positive-and-Negative-Posts">¶</a></h2><p>In this part, we wanted to see if engagement (likes + retweets) differs between positive and negative posts.
+<h4 id="Welch%E2%80%99s-t-test:-Comparing-Engagement-Between-Positive-and-Negative-Posts">Welch’s t-test: Comparing Engagement Between Positive and Negative Posts<a class="anchor-link" href="#Welch%E2%80%99s-t-test:-Comparing-Engagement-Between-Positive-and-Negative-Posts">¶</a></h4><p>In this part, we wanted to see if engagement (likes + retweets) differs between positive and negative posts.
 we used the <em>Welch t-test</em> because it’s designed to compare the means of two groups that might have
 different variances or sample sizes.</p>
 <p><em>null hypothesis (H0):</em> there is no difference in average engagement between positive and negative posts.<br/>
@@ -7973,7 +8080,7 @@ engagement.</p>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="One-Way-ANOVA:-Comparing-Sentiment-Across-Platforms">One-Way ANOVA: Comparing Sentiment Across Platforms<a class="anchor-link" href="#One-Way-ANOVA:-Comparing-Sentiment-Across-Platforms">¶</a></h2><p>In this section, we wanted to see if the average sentiment differs across platforms: twitter, facebook, and instagram.<br/>
+<h4 id="One-Way-ANOVA:-Comparing-Sentiment-Across-Platforms">One-Way ANOVA: Comparing Sentiment Across Platforms<a class="anchor-link" href="#One-Way-ANOVA:-Comparing-Sentiment-Across-Platforms">¶</a></h4><p>In this section, we wanted to see if the average sentiment differs across platforms: twitter, facebook, and instagram.<br/>
 Since we’re comparing <em>three groups, we used a </em><em>one-way ANOVA test</em>.</p>
 <p><em>null hypothesis (H0):</em> there is no significant difference in average sentiment between the three platforms.<br/>
 <em>alternative hypothesis (H1):</em> at least one platform’s average sentiment is significantly different from the others.</p>
@@ -8172,7 +8279,7 @@ Fail to reject the null hypothesis: No significant difference in mean sentiment 
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <hr/>
-<h2 id="Spearman-Correlation:-Relationship-Between-Sentiment-and-Engagement">Spearman Correlation: Relationship Between Sentiment and Engagement<a class="anchor-link" href="#Spearman-Correlation:-Relationship-Between-Sentiment-and-Engagement">¶</a></h2><p>For our last statistical method, we wanted to check if there’s a relationship between how positive a post is and how much engagement it gets (likes + retweets).<br/>
+<h4 id="Spearman-Correlation:-Relationship-Between-Sentiment-and-Engagement">Spearman Correlation: Relationship Between Sentiment and Engagement<a class="anchor-link" href="#Spearman-Correlation:-Relationship-Between-Sentiment-and-Engagement">¶</a></h4><p>For our last statistical method, we wanted to check if there’s a relationship between how positive a post is and how much engagement it gets (likes + retweets).<br/>
 since both are numeric values but might not follow a normal distribution, we used the Spearman correlation, which measures the strength and direction of a relationship between two ranked variables.</p>
 <p><strong>null hypothesis (H0):</strong> there is <em>no correlation</em> between sentiment score and engagement.<br/>
 <strong>alternative hypothesis (H1):</strong> there <em>is a correlation</em> — posts with more positive sentiment might get higher engagement.</p>
